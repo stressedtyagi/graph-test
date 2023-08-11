@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Breadcrumb, Layout, Menu, theme } from "antd";
 
-function App() {
+import Home from "./components/Home";
+import Navbar from "./components/Navbar";
+import ReactChart from "./components/ReactChart";
+import CanvasChart from "./components/CanvasJSChart";
+
+const { Header, Content, Footer } = Layout;
+
+const App = () => {
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout className="layout" style={{ background: "white" }}>
+      <Content
+        style={{
+          // padding: "0 50px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "2rem",
+        }}
+      >
+        <Navbar />
+        <Content style={{ marginLeft: "1rem" }}>
+          <Home />
+          <Content style={{ marginLeft: "0.5rem", marginRight: "1rem" }}>
+            <ReactChart />
+            <CanvasChart />
+          </Content>
+        </Content>
+      </Content>
+    </Layout>
   );
-}
+};
 
 export default App;
